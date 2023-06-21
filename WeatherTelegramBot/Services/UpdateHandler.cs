@@ -17,7 +17,7 @@ public partial class UpdateHandler : IUpdateHandler
 
     public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-      var handleTask=  update.Type switch
+        var handleTask = update.Type switch
         {
             UpdateType.Message => HandleMessageUpdateAsync(botClient, update.Message, cancellationToken),
             UpdateType.EditedMessage => HandleEditedMessageUpdateAsync(botClient, update.EditedMessage, cancellationToken),
@@ -25,25 +25,26 @@ public partial class UpdateHandler : IUpdateHandler
         };
         try
         {
-           await handleTask;
+            await handleTask;
         }
         catch (Exception ex)
         {
 
             await HandlePollingErrorAsync(botClient, ex, cancellationToken);
         }
-    
-  
+
+
     }
 
 
     private Task HandleUnknownMessageUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-      
-        return Task.CompletedTask;  
+        Log.Information("Received {updateType} update.", update.Type);
+
+        return Task.CompletedTask;
     }
 
-   
 
-   
+
+
 }

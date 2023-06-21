@@ -6,11 +6,11 @@ namespace WeatherTelegramBot.BackgroundServices;
 
 public class BotBackgroundTask : BackgroundService
 {
-    private readonly TelegramBotClient _botClient;
+    private readonly ITelegramBotClient _botClient;
     private readonly IUpdateHandler _updateHandler;
 
 
-    public BotBackgroundTask(TelegramBotClient botClient, IUpdateHandler updateHandler)
+    public BotBackgroundTask(ITelegramBotClient botClient, IUpdateHandler updateHandler)
     {
         _botClient = botClient;
         _updateHandler = updateHandler;

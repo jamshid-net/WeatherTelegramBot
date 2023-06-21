@@ -10,6 +10,6 @@ public partial class UpdateHandler
     {
         var username = editedMessage.From?.Username ?? editedMessage?.From?.FirstName;
         Log.Information("Received EditedMessage from {username}", username);
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 }
