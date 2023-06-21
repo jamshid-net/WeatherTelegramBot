@@ -14,8 +14,9 @@ public class Program
         Log.Logger = new LoggerConfiguration()
             .WriteTo.Console().MinimumLevel.Information()
             .CreateLogger();
+
         var builder = WebApplication.CreateBuilder(args);
-       
+        builder.Host.UseSerilog();
         builder.Services.AddTransient<IUpdateHandler, UpdateHandler>();
         builder.Services.AddHostedService<BotBackgroundTask>();
         builder.Services.AddSingleton<ITelegramBotClient>(
