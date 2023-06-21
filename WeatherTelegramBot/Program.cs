@@ -23,6 +23,8 @@ public class Program
              new TelegramBotClient(builder.Configuration.GetValue<string>("telegramBot")));
         
 
+
+
     
         var app = builder.Build();
 
